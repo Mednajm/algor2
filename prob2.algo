@@ -1,0 +1,33 @@
+ALGORITHM SOM_NBR_DISTINCT
+VAR
+    Set1 : ARRAY_OF INTEGER[n];
+    Set2 : ARRAY_OF INTEGER[m];
+    i,j,n,m,sum:INTEGER;
+    count :BOOLEAN;
+    sum :=0;
+BEGIN
+    Read(Set1);
+    Read(Set2);
+    FOR i FROM 0 TO n-1 STEP 1  DO
+    count:=false;
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            IF (Set[i] = Set[j]) THEN
+                count:=true;
+            END_IF
+        END_FOR
+        IF (count=false) THEN
+            sum += Set[i];
+        END_IF
+    END_FOR
+    FOR j FROM 0 TO m-1 STEP 1  DO
+    count:=false;
+        FOR i FROM 0 TO n-1 STEP 1  DO
+            IF (Set[j] = Set[i]) THEN
+                count:=true;
+            END_IF
+        END_FOR
+        IF (count=false) THEN
+            sum += Set[j];
+        END_IF
+    END_FOR
+END
