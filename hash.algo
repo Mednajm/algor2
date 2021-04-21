@@ -1,0 +1,31 @@
+ALGORITHM Htable
+VAR
+    Set1 : ARRAY_OF INTEGER[n];
+    Set2 : ARRAY_OF INTEGER[m];
+    i,j,count ,sumcommon,sumdistinct: INTEGER;
+    htab : HASH_TABLE<INTEGER,INTEGER>
+BEGIN
+    Read(Set1);
+    Read(Set2);
+    FOR i FROM 0 TO n-1 STEP 1  DO
+     htab.insert(Set1[i],1);    
+    END_FOR
+    FOR j FROM 0 TO m-1 STEP 1 DO
+    count:=1;
+        IF (htab.lookup(Set2[j]) = true) THEN
+          htab.insert(Set2[j],count+1);
+          ELSE
+           htab.insert(Set2[j],1)
+          END_IF
+    END_FOR
+    Set3 := htab.getkeys();
+    sumdistinct:=0;
+    sumcommon:=0;
+    FOR i FROM 0 TO Set3.length-1 STEP 1  DO
+        IF (htab.get(Set3[i] = 1)) THEN
+            sumdistinct += Set3[i];
+        ELSE
+             sumcommon += Set3[i]*2;
+        END_IF
+    END_FOR
+END
